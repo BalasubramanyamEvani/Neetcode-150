@@ -1,22 +1,15 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         def twoSum(i, val):
-            left = 0
+            left = i + 1
             right = len(nums) - 1
             pairs = []
             while left < right:
-                if left == i:
-                    left += 1
-                if right == i:
-                    right -= 1
-                
-                if left >= right:
-                    break
-                    
                 if nums[left] + nums[right] == val:
                     pairs.append([left, right])
                     left += 1
-                    right -= 1
+                    while nums[left] == nums[left - 1] and left < right:
+                        left += 1
                 elif nums[left] + nums[right] < val:
                     left += 1
                 elif nums[left] + nums[right] > val:
@@ -39,9 +32,5 @@ class Solution:
                     else:
                         triplets.append((num1, nums[pair[0]], nums[pair[1]]))
         
-        triplets_set = set()
-        for triplet in triplets:
-            triplets_set.add(triplet)
-        triplets = list(triplets_set)
         return triplets
         
