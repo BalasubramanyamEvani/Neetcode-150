@@ -6,7 +6,7 @@ class Solution:
             pairs = []
             while left < right:
                 if nums[left] + nums[right] == val:
-                    pairs.append([left, right])
+                    triplets.append([nums[i], nums[left], nums[right]])
                     left += 1
                     while nums[left] == nums[left - 1] and left < right:
                         left += 1
@@ -23,14 +23,6 @@ class Solution:
                 continue
             num1 = nums[i]
             pairs = twoSum(i, -num1)
-            if len(pairs) > 0:
-                for pair in pairs:
-                    if num1 > nums[pair[1]]:
-                        triplets.append((nums[pair[0]], nums[pair[1]], num1))
-                    elif num1 > nums[pair[0]]:
-                        triplets.append((nums[pair[0]], num1, nums[pair[1]]))
-                    else:
-                        triplets.append((num1, nums[pair[0]], nums[pair[1]]))
         
         return triplets
         
