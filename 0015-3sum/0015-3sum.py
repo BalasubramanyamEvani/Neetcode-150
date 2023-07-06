@@ -25,12 +25,10 @@ class Solution:
 
         triplets = []
         nums = sorted(nums)
-        seen = set()
         for i in range(len(nums)):
-            num1 = nums[i]
-            if num1 in seen:
+            if i > 0 and nums[i] == nums[i - 1]:
                 continue
-            seen.add(num1)
+            num1 = nums[i]
             pairs = twoSum(i, -num1)
             if len(pairs) > 0:
                 for pair in pairs:
