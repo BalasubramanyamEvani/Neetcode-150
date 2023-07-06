@@ -3,7 +3,6 @@ class Solution:
         def twoSum(i, val):
             left = i + 1
             right = len(nums) - 1
-            pairs = []
             while left < right:
                 if nums[left] + nums[right] == val:
                     triplets.append([nums[i], nums[left], nums[right]])
@@ -14,7 +13,6 @@ class Solution:
                     left += 1
                 elif nums[left] + nums[right] > val:
                     right -= 1
-            return pairs
 
         triplets = []
         nums = sorted(nums)
