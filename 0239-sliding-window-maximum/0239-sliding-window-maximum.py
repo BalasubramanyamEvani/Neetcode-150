@@ -13,10 +13,8 @@ class Solution:
         while r < nums_len:
             add_to_q(r)
             win_len = r - l + 1
-            
             if monotonic_decreasing_q[0] < l:
                 monotonic_decreasing_q.popleft()
-            
             if win_len == k:
                 curr_max = monotonic_decreasing_q[0] 
                 ret.append(nums[curr_max])
