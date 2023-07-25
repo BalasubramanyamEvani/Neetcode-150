@@ -8,9 +8,8 @@ class Solution:
         curr = head
         prev = None
         while curr:
-            n = curr.next
+            nnext = curr.next
             curr.next = prev
             prev = curr
-            curr = n
+            curr = nnext
         return prev
-    
