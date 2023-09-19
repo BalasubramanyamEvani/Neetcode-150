@@ -1,7 +1,11 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         def count_nums_less_than_equal(n):
-            return len([num for num in nums if num <= n])
+            res = 0
+            for num in nums:
+                if num <= n:
+                    res += 1
+            return res
         
         N = len(nums) - 1
         low = 1
