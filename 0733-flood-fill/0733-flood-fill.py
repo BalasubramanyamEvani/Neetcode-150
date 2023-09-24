@@ -4,16 +4,19 @@ class Solution:
         visited = set()
         prev_color = image[sr][sc]
         
-        def dfs(r, c):
+        def dfs(r, c, count):
             if r < 0 or r >= nr or c < 0 or c >= nc:
-                return
+                return count
             if (r, c) not in visited and image[r][c] == prev_color:
                 visited.add((r, c))
+                count += 1
                 image[r][c] = color
-                dfs(r + 1, c)
-                dfs(r - 1, c)
-                dfs(r, c + 1)
-                dfs(r, c - 1)
+                count = dfs(r + 1, c, count)
+                count = dfs(r - 1, c, count)
+                count = dfs(r, c + 1, count)
+                count = dfs(r, c - 1, count)
+            return count
         
-        dfs(sr, sc)
+        count = dfs(sr, sc, 0)
+        print(count)
         return image
