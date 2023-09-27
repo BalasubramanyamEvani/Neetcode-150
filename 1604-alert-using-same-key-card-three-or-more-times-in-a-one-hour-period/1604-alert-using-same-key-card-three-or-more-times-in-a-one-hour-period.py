@@ -8,7 +8,7 @@ class Solution:
         
         def check_within_hr(t1, t2, t3):
             return t2 - t1 <= 60 and t3 - t2 <= 60 and t3 - t1 <= 60
-        
+
         mem = {}
         res = set()
         sorted_keys = sorted(zip(keyName, keyTime), key=lambda x: x[1])
