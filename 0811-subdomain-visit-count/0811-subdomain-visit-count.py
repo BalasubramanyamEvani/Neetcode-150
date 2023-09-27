@@ -10,7 +10,6 @@ class Solution:
                     res[domain_part] += int(val) 
                 else:
                     res[domain_part] = int(val)
-        print(res)
         ret = []
         for k, v in res.items():
             ret.append(str(v) + " " + k)
