@@ -20,7 +20,7 @@ class Solution:
             else:
                 low = mid + 1
         
-        bp = low + 1
+        bp = low
         ret = bsearch(0, low - 1)
         if ret != -1:
             return ret
