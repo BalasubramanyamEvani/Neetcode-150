@@ -21,9 +21,9 @@ class Solution:
                 low = mid + 1
         
         bp = low
-        ret = bsearch(0, low - 1)
+        ret = bsearch(0, bp - 1)
         if ret != -1:
             return ret
 
-        return bsearch(low, len(nums) - 1)
+        return bsearch(bp, len(nums) - 1)
         
