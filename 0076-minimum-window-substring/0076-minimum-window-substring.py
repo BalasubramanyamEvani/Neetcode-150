@@ -29,16 +29,11 @@ class Solution:
                     mem_key_cntr -= 1
             r += 1
             if mem_key_cntr == 0:
-                update_pos(r, l)
                 while l < r:
-                    if s[l] not in mem:
-                        update_pos(r, l)
-                    else:
+                    update_pos(r, l)
+                    if s[l] in mem:
                         tmp[s[l]] -= 1
-                        if tmp[s[l]] >= mem[s[l]]:
-                             update_pos(r, l)
-                        else:
-                            update_pos(r, l)
+                        if tmp[s[l]] < mem[s[l]]:
                             mem_key_cntr += 1
                             l += 1
                             break
@@ -48,5 +43,3 @@ class Solution:
             return s[min_l: min_r + 1]
         
         return ""
-
-        
