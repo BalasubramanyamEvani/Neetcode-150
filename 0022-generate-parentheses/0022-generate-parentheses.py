@@ -17,8 +17,6 @@ class Solution:
                 backtrack(curr, opench + 1, closech)
                 curr.pop()
 
-            
-            
             return
         
         backtrack([], 0, 0)
