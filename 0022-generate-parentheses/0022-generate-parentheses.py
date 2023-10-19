@@ -7,15 +7,17 @@ class Solution:
                 res.append("".join(curr))
                 return
             
+            if closech < n and closech < opench:
+                curr.append(")")
+                backtrack(curr, opench, closech + 1)
+                curr.pop()
+            
             if opench < n:
                 curr.append("(")
                 backtrack(curr, opench + 1, closech)
                 curr.pop()
 
-            if closech < n and closech < opench:
-                curr.append(")")
-                backtrack(curr, opench, closech + 1)
-                curr.pop()
+            
             
             return
         
