@@ -6,10 +6,7 @@ class Solution:
             if len(res) == len(word):
                 return "".join(res) == word
             
-            if r < 0 or r >= nr:
-                return False
-            
-            if c < 0 or c >= nc:
+            if r < 0 or r >= nr or c < 0 or c >= nc:
                 return False
             
             if word[index] != board[r][c]:
