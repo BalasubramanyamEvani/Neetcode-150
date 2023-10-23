@@ -16,4 +16,3 @@ class Solution:
             return validate(root.left, min_limit, root.val) and validate(root.right, root.val, max_limit)
         
         return validate(root, -math.inf, math.inf)
-   
