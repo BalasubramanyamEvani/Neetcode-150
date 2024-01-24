@@ -8,4 +8,4 @@ class Solution:
         B = [str(num) for num in A]
         B = sorted(B, key=LargerNum)
         res = "".join(B)
-        return res if int(res) != 0 else "0"
+        return res if res[0] != "0" else "0"
