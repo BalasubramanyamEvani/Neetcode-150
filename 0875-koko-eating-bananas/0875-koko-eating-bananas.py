@@ -5,7 +5,7 @@ class Solution:
         def possible(k):
             return sum([math.ceil(p / k) for p in piles]) <= h
             
-        l = math.ceil(sum(piles)/h)
+        l = 1
         r = max(piles)
         curr = -1
         while l <= r:
