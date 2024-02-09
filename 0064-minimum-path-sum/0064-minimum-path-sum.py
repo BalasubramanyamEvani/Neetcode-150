@@ -39,5 +39,4 @@ class Solution:
         for i in range(1, nr):
             for j in range(1, nc):
                 dp[i][j] =  min(grid[nr - i - 1][nc - j - 1] + dp[i - 1][j], grid[nr - i - 1][nc - j - 1] + dp[i][j - 1])
-        print(dp)
         return dp[-1][-1]
