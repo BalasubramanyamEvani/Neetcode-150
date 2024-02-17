@@ -1,23 +1,16 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        res = []
-        
-        def backtrack(curr, opench, closech):
-            if len(curr) == 2 * n:
-                res.append("".join(curr))
-                return
-            
-            if closech < n and closech < opench:
-                curr.append(")")
-                backtrack(curr, opench, closech + 1)
-                curr.pop()
-            
-            if opench < n:
-                curr.append("(")
-                backtrack(curr, opench + 1, closech)
-                curr.pop()
-
-            return
-        
-        backtrack([], 0, 0)
-        return res
+        ret = []
+        def recursive(opened, closed, tmp):
+            if len(tmp) == 2*n:
+                ret.append("".join(tmp))
+            if opened < n:
+                tmp.append("(")
+                recursive(opened + 1, closed, tmp)
+                tmp.pop()
+            if closed < n and closed < opened:
+                tmp.append(")")
+                recursive(opened, closed + 1, tmp)
+                tmp.pop()
+        recursive(0, 0, [])
+        return ret
