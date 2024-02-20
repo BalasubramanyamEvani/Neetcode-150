@@ -4,6 +4,5 @@ class Solution:
         for num in nums:
             if num in arr_set:
                 return True
-            else:
-                arr_set.add(num)
+            arr_set.add(num)
         return False
