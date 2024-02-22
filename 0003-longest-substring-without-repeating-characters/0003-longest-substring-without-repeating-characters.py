@@ -1,22 +1,19 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        mem = {}
-        max_count = -1
-        curr_count = 0
+        N = len(s)
         i = 0
-        slen = len(s)
-        while i < slen:
-            ch = s[i]
-            if ch not in mem:
-                curr_count += 1
-                mem[ch] = i
-                i += 1
+        mem = {}
+        ret = 0
+        maxlen = 0
+        while i < N:
+            if s[i] not in mem:
+                maxlen += 1
+                mem[s[i]] = i
             else:
-                max_count = max(max_count, curr_count)
-                curr_count = 0
-                i = mem[ch] + 1
-                mem.clear()
-       
-        if len(mem) > 0:
-            max_count = max(max_count, len(mem))
-        return max_count if max_count > 0 else 0
+                i = mem[s[i]]
+                ret = max(ret, maxlen)
+                mem = {}
+                maxlen = 0
+            i += 1
+        ret = max(ret, maxlen)
+        return ret
