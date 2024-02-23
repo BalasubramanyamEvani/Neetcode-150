@@ -1,28 +1,25 @@
 class MinStack:
-
     def __init__(self):
-        self.norm_stack = collections.deque()
-        self.min_stack = collections.deque()
-        self.ptr = 0
-        
+        self.stack1 = deque()
+        self.stack2 = deque()
+
     def push(self, val: int) -> None:
-        self.norm_stack.append(val)
-        if not self.min_stack or val <= self.min_stack[-1]:
-            self.min_stack.append(val)
-        self.ptr += 1
-            
+        self.stack1.append(val)
+        if not self.stack2 or val <= self.stack2[-1]:
+            self.stack2.append(val)
+
     def pop(self) -> None:
-        if self.ptr > 0:
-            val = self.norm_stack.pop()
-            if self.min_stack[-1] == val:
-                self.min_stack.pop()
-            self.ptr -= 1
-        
+        val = self.stack1.pop()
+        if val == self.stack2[-1]:
+            self.stack2.pop()
+        return val
+
     def top(self) -> int:
-        return self.norm_stack[-1]
+        return self.stack1[-1]
 
     def getMin(self) -> int:
-        return self.min_stack[-1]
+        return self.stack2[-1]
+        
 
 
 # Your MinStack object will be instantiated and called as such:
