@@ -1,23 +1,21 @@
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
-        nums_len = len(nums)
-        monotonic_decreasing_q = collections.deque()
-        def add_to_q(idx):
-            while len(monotonic_decreasing_q) > 0 and nums[monotonic_decreasing_q[-1]] < nums[idx]:
-                monotonic_decreasing_q.pop()
-            monotonic_decreasing_q.append(idx)
-        
+        q = deque()
+        def addq(num, i):
+            while q and q[-1][0] < num:
+                q.pop()
+            q.append((num, i))
         l = 0
         r = 0
+        N = len(nums)
         ret = []
-        while r < nums_len:
-            add_to_q(r)
-            win_len = r - l + 1
-            if monotonic_decreasing_q[0] < l:
-                monotonic_decreasing_q.popleft()
-            if win_len == k:
-                curr_max = monotonic_decreasing_q[0] 
-                ret.append(nums[curr_max])
+        while r < N:
+            window = r - l + 1
+            addq(nums[r], r)
+            if window == k:
+                ret.append(q[0][0])
+                if q[0][1] == l:
+                    q.popleft()
                 l += 1
             r += 1
         return ret
