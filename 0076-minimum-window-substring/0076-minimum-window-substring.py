@@ -1,45 +1,33 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        mem = {}
-        tmp = {}
-        for c in t:
-            if c in mem:
-                mem[c] += 1
-            else:
-                mem[c] = 1
-                tmp[c] = 0
+        if len(t) > len(s):
+            return ""
+        counts = {}
+        for ch in t:
+            counts[ch] = counts.get(ch, 0) + 1
         l = 0
         r = 0
-        min_l, min_r = -1, -1
-        res = len(s) + 1
-        
-        def update_pos(rpos, lpos):
-            nonlocal res, min_l, min_r
-            if rpos - lpos < res:
-                min_l = lpos
-                min_r = rpos - 1
-                res = rpos - lpos
-        
-        mem_key_cntr = len(mem)
-        
-        while r < len(s):
-            if s[r] in mem:
-                tmp[s[r]] += 1
-                if tmp[s[r]] == mem[s[r]]:
-                    mem_key_cntr -= 1
+        tmp = {}
+        N = len(s)
+        required = len(counts)
+        retwin = math.inf
+        retl, retr = -1, -1
+        # construct a window
+        while r < N:
+            ch = s[r]
+            tmp[ch] = tmp.get(ch, 0) + 1
+            if ch in counts and counts[ch] == tmp[ch]:
+                required -= 1
+            # contract window to optimal
+            while required == 0 and l <= r:
+                winsize = r - l + 1
+                if winsize < retwin:
+                    retwin = winsize
+                    retl, retr = l, r
+                tmp[s[l]] -= 1
+                if s[l] in counts and tmp[s[l]] < counts[s[l]]:
+                    required += 1
+                l += 1
+            # move the window
             r += 1
-            if mem_key_cntr == 0:
-                while l < r:
-                    update_pos(r, l)
-                    if s[l] in mem:
-                        tmp[s[l]] -= 1
-                        if tmp[s[l]] < mem[s[l]]:
-                            mem_key_cntr += 1
-                            l += 1
-                            break
-                    l += 1
-        
-        if min_l != -1:
-            return s[min_l: min_r + 1]
-        
-        return ""
+        return s[retl:retr + 1] if retl != -1 else ""
