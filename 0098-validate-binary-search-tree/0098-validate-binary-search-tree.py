@@ -6,13 +6,10 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        def validate(root, min_limit, max_limit):
-            if not root:
+        def recursive(node, currmin, currmax):
+            if not node:
                 return True
-            
-            if root.val <= min_limit or root.val >= max_limit:
+            if not (node.val > currmin and node.val < currmax):
                 return False
-            
-            return validate(root.left, min_limit, root.val) and validate(root.right, root.val, max_limit)
-        
-        return validate(root, -math.inf, math.inf)
+            return recursive(node.left, currmin, node.val) and recursive(node.right, node.val, currmax)
+        return recursive(root, -math.inf, math.inf)
