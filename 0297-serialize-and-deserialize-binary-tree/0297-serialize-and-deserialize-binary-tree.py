@@ -25,7 +25,7 @@ class Codec:
             if node:
                 ret.append(str(node.val))
             else:
-                ret.append("null")
+                ret.append("n")
             if node:
                 q.append(node.left)
                 q.append(node.right)
@@ -48,8 +48,8 @@ class Codec:
         i = 1
         while i < N:
             curr = q.popleft()
-            lval = TreeNode(int(nodes[i])) if nodes[i] != "null" else None
-            rval = TreeNode(int(nodes[i + 1])) if nodes[i + 1] != "null" else None
+            lval = TreeNode(int(nodes[i])) if nodes[i] != "n" else None
+            rval = TreeNode(int(nodes[i + 1])) if nodes[i + 1] != "n" else None
             curr.left = lval
             curr.right = rval
             if lval:
