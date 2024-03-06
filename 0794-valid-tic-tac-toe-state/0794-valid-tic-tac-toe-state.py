@@ -1,10 +1,5 @@
 class Solution:
     def validTicTacToe(self, board: List[str]) -> bool:
-        mem = {
-            "O": 0,
-            "X": 0
-        }
-        
         board_str = "".join(board)
         winspace = board + ["".join([board[i][i] for i in range(3)])] + ["".join(board[2 - i][i] for i in range(2, -1, -1))]
         
@@ -14,9 +9,7 @@ class Solution:
                 tmp.append(board[j][i])
             winspace.append("".join(tmp))
         
-        for ch in board_str:
-            if ch != " ":
-                mem[ch] = mem.get(ch, 0) + 1
+        mem = Counter(board_str)
         if mem["O"] + mem["X"] == 1 and mem["O"] == 1:
             return False
         xwin = "XXX"
