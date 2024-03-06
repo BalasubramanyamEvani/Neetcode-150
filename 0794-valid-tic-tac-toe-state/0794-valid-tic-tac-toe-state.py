@@ -21,6 +21,4 @@ class Solution:
             return mem["X"] - mem["O"] == 1
         if owin in winspace:
             return mem["X"] - mem["O"] == 0
-        if diff >= 0 and diff <= 1:
-            return True
-        return False
+        return diff >= 0 and diff <= 1
