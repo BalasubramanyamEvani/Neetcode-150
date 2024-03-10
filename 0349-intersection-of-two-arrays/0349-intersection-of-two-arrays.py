@@ -3,9 +3,9 @@ class Solution:
         mem = set()
         for num in nums1:
             mem.add(num)
-        ret = []
+        ret = set()
         for num in nums2:
             if num in mem and not num in ret:
-                ret.append(num)
-        return ret
+                ret.add(num)
+        return list(ret)
         
