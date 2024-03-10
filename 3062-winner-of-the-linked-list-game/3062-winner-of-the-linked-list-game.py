@@ -19,4 +19,3 @@ class Solution:
         if odd == even:
             return "Tie"
         return "Odd" if odd > even else "Even"
-        
