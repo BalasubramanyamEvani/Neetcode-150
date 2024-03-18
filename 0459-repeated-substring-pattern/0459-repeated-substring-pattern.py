@@ -1,23 +1,23 @@
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
-        def factorize(x):
-            if x == 1:
-                return []
-            res1 = []
-            res2 = []
-            lim = int(math.sqrt(x))
-            for i in range(1, lim + 1):
-                if x % i == 0:
-                    res1.append(i)
+        def factorize(n):
+            factors = []
+            l, r = 1, int(math.sqrt(n))
+            for i in range(l, r + 1):
+                if n % i == 0:
+                    factors.append(i)
                     if i != 1:
-                        res2.append(x // i)
-            return res1 + res2[::-1]
+                        factors.append(n // i)
+            return factors
         
-        slen = len(s)
-        factors = factorize(slen)
+        N = len(s)
+        if N == 1:
+            return False
+        factors = factorize(N)
         for factor in factors:
-            times = slen // factor
-            if s[0: factor] * times == s:
+            multiple = N // factor
+            substring = s[:factor]
+            if substring * multiple == s:
                 return True
         return False
-        
+    
