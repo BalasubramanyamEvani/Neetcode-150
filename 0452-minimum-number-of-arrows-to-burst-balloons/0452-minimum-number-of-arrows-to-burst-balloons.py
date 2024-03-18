@@ -4,7 +4,6 @@ class Solution:
         stack = deque()
         def ifoverlaps(p1, p2):
             return p2[0] >= p1[0] and p2[0] <= p1[1]
-        
         for point in points:
             if stack and ifoverlaps(stack[-1], point):
                 prev = stack.pop()
@@ -12,5 +11,4 @@ class Solution:
                 stack.append((new_start, new_end))
             else:
                 stack.append(point)
-        
         return len(stack)
