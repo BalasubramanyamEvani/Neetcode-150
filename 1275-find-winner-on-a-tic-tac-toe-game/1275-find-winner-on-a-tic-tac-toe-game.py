@@ -1,58 +1,27 @@
 class Solution:
     def tictactoe(self, moves: List[List[int]]) -> str:
-        nr = 3
-        board = [["" * nr for j in range(nr)] for i in range(nr)]
-        
-        def checkrow(r):
-            bazinga = True
-            for i in range(1, nr):
-                if board[r][i] != board[r][i - 1]:
-                    bazinga = False
-                    break
-            return bazinga
-        def checkcol(c):
-            bazinga = True
-            for i in range(1, nr):
-                if board[i][c] != board[i - 1][c]:
-                    bazinga = False
-                    break
-            return bazinga
-        def checkdiag(primary=True):
-            bazinga = True
-            if primary:
-                for i in range(1, nr):
-                    if board[i][i] != board[i - 1][i - 1]:
-                        bazinga = False
-                        break
-            else:
-                for i in range(1, nr):
-                    if board[i][nr - 1 - i] != board[i - 1][nr - i]:
-                        bazinga = False
-                        break
-            return bazinga
-        
-        player = "A"
+        num_moves = len(moves)
+        grid = [[""] * 3 for _ in range(3)]
+        state = True
         for move in moves:
             r, c = move
-            if player == "A":
-                board[r][c] = "X"
-            else:
-                board[r][c] = "O"
-            bazinga = False
-            bazinga |= checkrow(r)
-            bazinga |= checkcol(c)
-            if r == c:
-                bazinga |= checkdiag(primary=True)
-            if r == nr - 1 - c:
-                bazinga |= checkdiag(primary=False)
+            grid[r][c] = "x" if state else "o"
+            state = not state
             
-            if bazinga:
-                return player
-            
-            if player == "A":
-                player = "B"
-            else:
-                player = "A"
-            
-        return "Draw" if len(moves) == nr * nr else "Pending"
+        awins = "xxx"
+        bwins = "ooo"
+        winspace = ["".join(row) for row in grid] + ["".join([grid[i][i] for i in range(3)])] + ["".join([grid[2 - i][i] for i in range(2, -1, -1)])]
+        for i in range(3):
+            tmp = []
+            for j in range(3):
+                tmp.append(grid[j][i])
+            winspace.append("".join(tmp))
+        
+        if awins in winspace:
+            return "A"
+        if bwins in winspace:
+            return "B"
+        if num_moves == 9:
+            return "Draw"
+        return "Pending"
         
