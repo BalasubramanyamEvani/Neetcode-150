@@ -15,6 +15,7 @@ class Solution:
                 curr.next = None
             if i == b + 1:
                 p2 = curr
+                break
             curr = tmp
             i += 1
 
