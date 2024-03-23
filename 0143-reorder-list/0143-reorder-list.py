@@ -16,10 +16,9 @@ class Solution:
                 fast = fast.next.next
             ret = slow.next
             if ret:
-                slow.next.prev = None
                 slow.next = None
             return ret
-            
+
         def reverse(node):
             prev = None
             curr = node
