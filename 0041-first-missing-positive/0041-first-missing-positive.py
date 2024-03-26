@@ -4,7 +4,6 @@ class Solution:
         A = [max(num, 0) for num in A]
         for i, num in enumerate(A):
             curr = num
-            # at most run 2 times - only scan [1 .. len(A) + 1]
             while curr - 1 >= 0 and curr - 1 < len(A) and A[curr - 1] != curr:
                 tmp = A[curr - 1]
                 A[curr - 1] = curr
