@@ -1,6 +1,5 @@
 class Solution:
     def addNegabinary(self, arr1: List[int], arr2: List[int]) -> List[int]:
-        # possible remainders = {-1, 0, 1}
         def convert_to_base10(num):
             n = len(num)
             base = -2
@@ -9,6 +8,9 @@ class Solution:
                 ret += num[i] * (base**(n - i - 1))
             return ret
         
+        # possible remainders = {-1, 0, 1}
+        # if remainder is -1, then representation is 11 in base 2
+        # so keep 1 as remainder and carry 1 to next
         def convert_to_baseneg2(num):
             if num == 0:
                 return [num]
