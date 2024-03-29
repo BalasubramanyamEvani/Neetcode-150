@@ -4,6 +4,9 @@ class Solution:
         l = 0
         count = 0
         maxnum_count = 0
+        # actually find subarray with count == k
+        # and then check how many subarrays are ending with this 
+        # found subarray
         for r, num in enumerate(nums):
             if num == maxnum:
                 maxnum_count += 1
