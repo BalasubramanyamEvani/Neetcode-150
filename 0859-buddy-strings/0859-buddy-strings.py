@@ -18,5 +18,5 @@ class Solution:
         m2 = Counter(goal)
         if diffs == 2:
             return m1 == m2
+        # more than one swap required
         return False
-        
