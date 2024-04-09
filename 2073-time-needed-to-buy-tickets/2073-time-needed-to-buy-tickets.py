@@ -9,7 +9,7 @@ class Solution:
                 res += min(ticket, tickets[k])
             # the number of times the back numbers
             # would come behind the ticket at kth
-            # position
+            # position (-1)
             else:
                 res += min(tickets[k] - 1, ticket)
         return res
