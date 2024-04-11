@@ -12,12 +12,11 @@ class Solution:
         # return ret
         ret = []
         N = len(nums)
-        def backtrack(tmp, ind):
+        def dfs(index, tmp):
             ret.append(tmp[:])
-            for i in range(ind, N):
+            for i in range(index + 1, N):
                 tmp.append(nums[i])
-                backtrack(tmp, i + 1)
+                dfs(i, tmp)
                 tmp.pop()
-        
-        backtrack([], 0)
+        dfs(-1, [])
         return ret
