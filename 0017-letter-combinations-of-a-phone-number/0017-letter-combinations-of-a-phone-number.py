@@ -12,17 +12,18 @@ class Solution:
         }
         res = []
         N = len(digits)
-        def backtrack(i, tmp):
+        def dfs(i, tmp):
             if i == N:
                 res.append("".join(tmp))
                 return
-            possibilities = mapping[digits[i]]
-            for letter in possibilities:
+            letters = mapping[digits[i]]
+            for letter in letters:
                 tmp.append(letter)
-                backtrack(i + 1, tmp)
+                dfs(i + 1, tmp)
                 tmp.pop()
         
-        backtrack(0, [])
+        dfs(0, [])
         if len(res) == 1 and res[0] == "":
             return ""
         return res
+        
