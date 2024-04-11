@@ -1,10 +1,10 @@
 class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         nr, nc = len(board), len(board[0])
-        
-        def dfs(res, r, c, index):
-            if len(res) == len(word):
-                return "".join(res) == word
+        N = len(word)
+        def dfs(tmp, r, c, index):
+            if len(tmp) == N:
+                return "".join(tmp) == word
             
             if r < 0 or r >= nr or c < 0 or c >= nc:
                 return False
@@ -14,16 +14,12 @@ class Solution:
             
             dr = [-1, 1, 0, 0]
             dc = [0 ,0, -1, 1]
-            
-            res.append(board[r][c])
+            tmp.append(board[r][c])
             board[r][c] = "#"
-            
             for i in range(4):
-                if dfs(res, r + dr[i], c + dc[i], index + 1):
+                if dfs(tmp, r + dr[i], c + dc[i], index + 1):
                     return True
-            
-            board[r][c] = res.pop(-1)
-            
+            board[r][c] = tmp.pop()
             return False
         
         for i in range(nr):
