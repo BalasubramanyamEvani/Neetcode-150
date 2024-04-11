@@ -3,6 +3,8 @@ class Solution:
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         x, y = 0, 0
         rot = 0
+        # because after 4 iterations it should be
+        # facing the same way and so we can compare it
         for i in range(4):
             for instruction in instructions:
                 if instruction == "R":
