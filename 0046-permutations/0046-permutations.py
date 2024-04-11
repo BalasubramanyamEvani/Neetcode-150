@@ -1,18 +1,18 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        N = len(nums)
-        valid = [True] * N
         ret = []
-        def backtrack(i, tmp):
-            if i == N:
+        N = len(nums)
+        valid = [True for _ in range(N)]
+        def dfs(tmp):
+            if len(tmp) == N:
                 ret.append(tmp[:])
                 return
-            for j in range(N):
-                if valid[j]:
-                    tmp.append(nums[j])
-                    valid[j] = False
-                    backtrack(i + 1, tmp)
+            for i, num in enumerate(nums):
+                if valid[i]:
+                    tmp.append(num)
+                    valid[i] = False
+                    dfs(tmp)
                     tmp.pop()
-                    valid[j] = True
-        backtrack(0, [])
+                    valid[i] = True
+        dfs([])
         return ret
