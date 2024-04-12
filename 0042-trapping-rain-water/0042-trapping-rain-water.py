@@ -6,7 +6,6 @@ class Solution:
         
         lmaxes = [-1] * num_heights
         rmaxes = [-1] * num_heights
-        
         lmaxes[0] = -1
         for i in range(1, num_heights):
             lmax = max(lmax, height[i - 1])
