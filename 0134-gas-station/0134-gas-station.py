@@ -3,9 +3,10 @@ class Solution:
         tot_gas, tot_cost = sum(gas), sum(cost)
         if tot_gas < tot_cost:
             return -1
-        
+        # at this point there definitely will be a start position
         tot = 0
         N = len(gas)
+        # start at 0th position
         start = 0
         for i in range(N):
             # at each starting position
