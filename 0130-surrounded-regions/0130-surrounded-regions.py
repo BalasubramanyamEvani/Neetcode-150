@@ -15,6 +15,10 @@ class Solution:
                 dfs(r, c + 1)
                 dfs(r, c - 1)
         
+        # similar to pacific atlantic
+        # only those which have "O" connected till
+        # the boundary will not be surrounded by "X"
+        # from 4 sides
         for i in range(nr):
             if board[i][0] == "O" and (i, 0) not in visited: 
                 dfs(i, 0)
