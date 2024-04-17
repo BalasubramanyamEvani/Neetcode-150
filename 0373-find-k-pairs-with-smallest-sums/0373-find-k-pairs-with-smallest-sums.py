@@ -7,6 +7,8 @@ class Solution:
         heap = []
         heapq.heappush(heap, (A[0] + B[0], 0, 0))
         
+        # since from (0, 1) and (1, 0)
+        # we can get (1, 1) duplicated
         visited = set()
         visited.add((0, 0))
         
