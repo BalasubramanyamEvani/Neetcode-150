@@ -9,9 +9,13 @@ class Solution:
         dummy.next = head
         curr1 = dummy.next
         currsum = 0
+        # handle scenario like [0]
         mem = {
             0: dummy
         }
+        # algorithm is to see when the prefix sum
+        # occurs again. because the nodes in between the
+        # repeating prefix Sums did equal amount of +x, -x
         while curr1:
             currsum += curr1.val
             if currsum in mem:
