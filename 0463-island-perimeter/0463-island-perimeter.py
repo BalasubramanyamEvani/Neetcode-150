@@ -16,9 +16,7 @@ class Solution:
                 left = dfs(r, c - 1)
                 ret += 4 - bottom - top - right - left
                 return 1
-            if grid[r][c] == 0:
-                return 0
-            return 1
+            return grid[r][c]
         
         ret = 0
         for r in range(nr):
