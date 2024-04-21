@@ -10,7 +10,7 @@ class Solution:
                 graph[n2] = set()
             graph[n1].add(n2)
             graph[n2].add(n1)
-            
+
         def traverse(n):
             if n not in visited:
                 visited.add(n)
