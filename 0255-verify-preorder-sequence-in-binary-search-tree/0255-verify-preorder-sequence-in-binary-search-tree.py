@@ -1,21 +1,18 @@
 class Solution:
     def verifyPreorder(self, preorder: List[int]) -> bool:
-        def dfs(index, low, high):
-            if index == len(preorder):
-                return -1, True
-            root = preorder[index]
-            # cannot fit the node
-            if root < low or root > high:
-                return index, False
-            # at this point the node at index fits
-            # since it passes previous if
-            
-            # check if next index fits in the left subtree
-            j, fits = dfs(index + 1, low, root)
-            if j >= 0:
-                # check if it fits in the right subtree 
-                j, fits = dfs(j, root, high)
-            return j, fits
-        
-        _, fits = dfs(0, -math.inf, math.inf)
-        return fits
+        stack = []
+        cur = [-math.inf, math.inf]
+
+        for num in preorder:
+            while stack and stack[-1][0] < num:
+                temp = stack.pop()
+                cur[0] = temp[0]
+                cur[1] = temp[2]
+
+            if not cur[0] < num < cur[1]:
+                return False
+
+            stack.append((num, *cur))
+            cur[1] = num
+
+        return True
