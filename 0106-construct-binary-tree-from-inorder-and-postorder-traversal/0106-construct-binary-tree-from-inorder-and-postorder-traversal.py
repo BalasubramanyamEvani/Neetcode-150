@@ -6,6 +6,7 @@
 #         self.right = right
 class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+        
         def dfs(inorder, postorder):
             if not inorder:
                 return
@@ -22,4 +23,4 @@ class Solution:
             
             return subroot
             
-        return dfs(inorder, postorder) 
+        return dfs(inorder, postorder)
