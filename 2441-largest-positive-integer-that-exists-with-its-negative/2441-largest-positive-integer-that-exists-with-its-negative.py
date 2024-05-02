@@ -1,6 +1,6 @@
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
-        nums = sorted(nums)
+        nums.sort()
         ret = -1
         if nums[0] > 0 or nums[-1] < 0:
             return -1
