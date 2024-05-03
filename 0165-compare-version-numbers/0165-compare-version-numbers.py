@@ -7,7 +7,6 @@ class Solution:
         v1Parts = v1Parts + [0] * (maxnum - N1)
         v2Parts = v2Parts + [0] * (maxnum - N2)
         i, j = 0, 0
-        print(v1Parts, v2Parts)
         while i < maxnum:
             if v1Parts[i] > v2Parts[i]:
                 return 1
@@ -15,4 +14,4 @@ class Solution:
                 return -1
             i += 1
         return 0
-        
+    
