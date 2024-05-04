@@ -11,6 +11,8 @@ class Solution:
             nonlocal p, q
             if not node:
                 return None
+            if node.val == p or node.val == q:
+                return node
             if p.val < node.val and q.val < node.val:
                 return lca(node.left)
             elif p.val > node.val and q.val > node.val:
