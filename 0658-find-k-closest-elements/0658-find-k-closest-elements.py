@@ -24,11 +24,7 @@ class Solution:
         index = bsearch(0, N - 1)
         l, r = index, index + 1
         while k > 0:
-            if l == -1:
-                r += 1
-                k -= 1
-                continue
-            if r == N or lt(arr[l], arr[r]):
+            if r == N or (l != -1 and lt(arr[l], arr[r])):
                 l -= 1
             else:
                 r += 1
