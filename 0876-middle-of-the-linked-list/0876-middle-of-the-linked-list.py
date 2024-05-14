@@ -11,4 +11,3 @@ class Solution:
             slow_ptr = slow_ptr.next
             fast_ptr = fast_ptr.next.next
         return slow_ptr
-            
