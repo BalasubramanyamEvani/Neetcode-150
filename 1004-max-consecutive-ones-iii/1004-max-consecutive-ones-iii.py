@@ -11,7 +11,6 @@ class Solution:
                     k += 1
                 l += 1
             else:
-                print(l, r)
                 ret = max(ret, r - l + 1)
             r += 1
         return ret
