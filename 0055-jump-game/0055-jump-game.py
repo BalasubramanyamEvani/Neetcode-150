@@ -16,6 +16,6 @@ class Solution:
         currmax = 0
         for i, num in enumerate(nums):
             if i > currmax:
-                break
+                return False
             currmax = max(currmax, i + nums[i])
         return currmax >= N - 1
