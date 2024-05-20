@@ -18,4 +18,4 @@ class Solution:
             if i > currmax:
                 return False
             currmax = max(currmax, i + nums[i])
-        return currmax >= N - 1
+        return True
