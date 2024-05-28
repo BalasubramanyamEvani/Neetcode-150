@@ -14,7 +14,4 @@ class Solution:
                 stack.append(merged)
             else:
                 stack.append(curr)
-        ret = []
-        while stack:
-            ret.append(stack.pop())
-        return ret[::-1]
+        return list(stack)
