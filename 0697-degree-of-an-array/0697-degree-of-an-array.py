@@ -1,17 +1,20 @@
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
-        mem = {}
-        counts = {}
+        cache = {}
+        currmax = -math.inf
         for i, num in enumerate(nums):
-            if num not in mem:
-                mem[num] = {}
-                mem[num]["left"] = i
-            mem[num]["right"] = i
-            counts[num] = counts.get(num, 0) + 1
-        maxnum = max(counts.values())
+            if num in cache:
+                cache[num]["right"] = i
+                cache[num]["val"] += 1
+            else:
+                cache[num] = {
+                    "left": i,
+                    "right": i,
+                    "val": 1
+                }
+            currmax = max(currmax, cache[num]["val"])
         ret = math.inf
-        for k, v in mem.items():
-            if counts[k] == maxnum:
-                l, r = v["left"], v["right"]
-                ret = min(ret, r - l + 1)
+        for k, v in cache.items():
+            if v["val"] == currmax:
+                ret = min(ret, v["right"] - v["left"] + 1)
         return ret
