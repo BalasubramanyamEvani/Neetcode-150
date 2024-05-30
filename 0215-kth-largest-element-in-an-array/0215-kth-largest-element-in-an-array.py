@@ -25,7 +25,7 @@ class MaxHeap:
 
         ret = self.heap[0]
         self.swap(-1, 0)
-        self.heap.pop(-1)
+        self.heap.pop()
         if self.heap:  
             self.heapifyDown(0)
         return ret
