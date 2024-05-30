@@ -1,22 +1,14 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        n = len(nums) - 1
-        memo = {}
-        
-        def recurse(index, total):
-            if index == n + 1:
-                if total == target:
-                    return 1
-                return 0
-            
-            if (index, total) in memo:
-                count = memo[(index, total)]
-                return count
-            
-            memo[(index, total)] = recurse(index + 1, total + nums[index]) + recurse(index + 1, total - nums[index])
-            
-            return memo[(index, total)]
-        
-        res = recurse(0, 0)
-        return res
-            
+        N = len(nums)
+        cache = {}
+        def dfs(i, currsum):
+            if i == N:
+                return 1 if currsum == target else 0
+            if (i, currsum) in cache:
+                return cache[(i, currsum)]
+            left = dfs(i + 1, currsum + nums[i])
+            right = dfs(i + 1, currsum - nums[i])
+            cache[(i, currsum)] = left + right
+            return left + right
+        return dfs(0, 0)
