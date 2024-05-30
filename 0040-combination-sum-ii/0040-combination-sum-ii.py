@@ -10,7 +10,7 @@ class Solution:
             if currsum > target:
                 return
             for i in range(index + 1, N):
-                if candidates[i] == candidates[i - 1] and i - 1 != index:
+                if i - 1 >= 0 and candidates[i] == candidates[i - 1] and i - 1 != index:
                     continue
                 tmp.append(candidates[i])
                 dfs(i, tmp, currsum + candidates[i])
