@@ -35,7 +35,7 @@ class MaxHeap:
         while parent_index >= 0 and self.heap[parent_index] < self.heap[i]:
             self.swap(parent_index, i)
             i = parent_index
-            parent_index = self.parent(parent_index)
+            parent_index = self.parent(i)
            
     
     def heapifyDown(self, i):
@@ -55,7 +55,6 @@ class MaxHeap:
 
     def __len__(self):
         return len(self.heap)
-        
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
