@@ -18,7 +18,7 @@ class Solution:
             level, node = q.popleft()
             if level not in cache:
                 cache[level] = []
-            if cache[level]:
+            elif cache[level]:
                 cache[level][-1].next = node
             cache[level].append(node)
             for child in [node.left, node.right]:
