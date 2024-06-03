@@ -2,6 +2,9 @@ class Solution:
     def longestSubstring(self, s: str, k: int) -> int:
         ret = 0
         for uniques in range(1, 27):
+            # problem boils down to largest substring
+            # with 'uniques' number of characters and each
+            # character has count of >= k
             left = 0
             count = Counter()
             for right, ch in enumerate(s):
