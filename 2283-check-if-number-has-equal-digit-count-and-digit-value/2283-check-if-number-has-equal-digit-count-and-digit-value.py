@@ -4,8 +4,7 @@ class Solution:
         for ch in num:
             cache[ch] += 1
         for digit, occ in enumerate(num):
-            digit = str(digit)
-            occ = int(occ)
+            digit, occ = str(digit), int(occ)
             if cache[digit] != occ:
                 return False
         return True
