@@ -7,7 +7,7 @@ class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         curr = head
         prev = None
-        f = False
+        found = False
         while curr:
             if curr.next and curr.val == curr.next.val:
                 currval = curr.val
@@ -16,9 +16,9 @@ class Solution:
                 if prev:
                     prev.next = curr.next
             else:
-                f = True
+                found = True
                 if not prev:
                     head = curr
                 prev = curr
             curr = curr.next
-        return head if f else None
+        return head if found else None
