@@ -13,12 +13,10 @@ class Solution:
         if not root:
             return
         q = deque([(0, root)])
-        cache = {}
+        cache = defaultdict(list)
         while q:
             level, node = q.popleft()
-            if level not in cache:
-                cache[level] = []
-            elif cache[level]:
+            if cache[level]:
                 cache[level][-1].next = node
             cache[level].append(node)
             for child in [node.left, node.right]:
