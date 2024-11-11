@@ -10,6 +10,7 @@ class Solution:
             if r - l + 1 == k:
                 avg = currsum / k
                 currmax = max(currmax, avg)
+                # slide the window
                 currsum -= nums[l]
                 l += 1
             r += 1
