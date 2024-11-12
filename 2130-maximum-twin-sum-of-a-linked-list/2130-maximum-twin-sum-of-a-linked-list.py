@@ -15,24 +15,21 @@ class Solution:
                 curr = tmp
             return prev
         
-        def copy(node):
-            new_head = ListNode(-1)
-            ret = new_head
-            curr = node
-            while curr:
-                new_head.next = ListNode(curr.val)
-                curr = curr.next
-                new_head = new_head.next
-            return ret.next
+        slow, fast = head, head
+        prev = None
+        while slow and fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
         
-        new_head = copy(head)
-        tail = reverse(head)
+        tail = reverse(slow)
+        prev.next = None
         
         maxval = -math.inf
-        while new_head != tail:
-            n1, n2 = new_head.val, tail.val
+        while head != tail:
+            n1, n2 = head.val, tail.val
             maxval = max(maxval, n1 + n2)
-            new_head = new_head.next
+            head = head.next
             tail = tail.next
         
         return maxval
