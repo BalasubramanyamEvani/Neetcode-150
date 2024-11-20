@@ -4,8 +4,8 @@ class Solution:
         N = len(nums)
         ret = 0
         mem = {}
-        for i in range(N):
-            currsum += nums[i]
+        for num in nums:
+            currsum += num
             if currsum == k:
                 ret += 1
             if currsum - k in mem:
