@@ -8,7 +8,6 @@ class Solution:
                 break
             self.crush(marked)
             self.gravity()
-            print(board)
         return board
     
     def mark(self):
