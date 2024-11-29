@@ -6,14 +6,14 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-        count = 0
-        def recursive(node, currmax):
+        def dfs(node, currmax):
             if not node:
-                return
-            nonlocal count
+                return 0
+            counts = 0
             if node.val >= currmax:
-                count += 1
-            recursive(node.left, max(node.val, currmax))
-            recursive(node.right, max(node.val, currmax))
-        recursive(root, -math.inf)
-        return count
+                counts += 1
+            currmax = max(node.val, currmax)
+            counts += dfs(node.left, currmax)
+            counts += dfs(node.right, currmax)
+            return counts
+        return dfs(root, -math.inf)
