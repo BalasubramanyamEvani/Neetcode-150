@@ -10,9 +10,8 @@ class Solution:
         # return shouldbe - sumx
         
         # bitwise solution
-        n = len(nums)
-        ret = n
-        for i in range(0, n):
-            ret ^= i ^ nums[i]
+        N = len(nums)
+        ret = N
+        for i in range(0, N):
+            ret = ret ^ (i ^ nums[i])
         return ret
-    
